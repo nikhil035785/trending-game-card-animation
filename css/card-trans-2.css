@@ -1,0 +1,300 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+:root{
+    --clr-dark : rgb(32, 20, 20);
+    --clr-light : rgb(70, 42, 42);
+    --clr-primary : rgb(238, 238, 238);
+    --clr-secondary : rgb(202, 33, 33);
+    --clr-btn : rgb(58, 115, 240);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;500&display=swap');
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--clr-dark);
+}
+.page-title{
+    color: var(--clr-primary);
+    margin: 50px;
+    font-size: 2rem;
+}
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.card{
+    width: 150px;
+    position: relative;
+    color: var(--clr-primary);
+    border-radius: 15px;
+    background-color: transparent;
+    margin: 10px;
+}
+
+.card .ranking{
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    color: var(--clr-dark);
+    width: 100%;
+    top: -8px;
+    right: 20px;
+}
+
+.ranking .ranking-container{
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.ranking-container span{
+    font-size: 2.5rem;
+    color: rgba(32, 20, 20, 0.884);
+    /* position: absolute; */
+}
+.ranking-container h6{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1rem;
+    color: var(--clr-primary);
+}
+
+.card .game-cover{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card .game-cover .img-fluid{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+    transition: 0.2s width linear;
+    box-shadow: 1px 1px 15px 0px #080707;
+    z-index: 1;
+}
+
+.card .game-info{
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .game-info .game-title{
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.card .game-info .bottom{
+    padding: 5px 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-player .player-watching{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.player-watching > p:nth-child(3){
+    display: none;
+}
+.total-player .player-streams{
+    display: none;
+}
+.total-player .player-watching span{
+    font-size: 0.8rem;
+    padding: 0px 7px 0 0;
+}
+
+.bottom .see{
+    display: none;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin: 5px 0;
+}
+
+.see .seemorebtn{
+    padding: 10px 15px;
+    background-color: var(--clr-btn);
+    text-decoration: none;
+    color: var(--clr-primary);
+    border-radius: 15px;
+    width: 100%;
+}
+
+.see a.seemorebtn:hover{
+    background-color: #2954cc;
+}
+
+.bottom .player-icons{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.player{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-primary);
+}
+
+.player .user-name, .player .user-watching{
+    display: none;
+    font-size: 0.6rem;
+}
+.user-name{
+    font-weight: bold;
+    padding: 3px;
+}
+
+.player-icons .player .icon-img{
+    width: 25px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid var(--clr-dark);
+    margin-left: -10px;
+}
+
+.total-player , .see , .player-icons{
+    padding: 8px 0;
+}
+
+
+/* hover transitions */
+
+.game-cover::before{
+    content: "";
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    z-index: 1;
+    background: linear-gradient(#0c040452,#0c040452);
+	clip-path: ellipse(300% 250% at 40% -160%);
+    border-radius: 15px;
+}
+
+.card:hover {
+    width: 200px;
+    background-color: var(--clr-light);
+    box-shadow: 1px 1px 15px 0px #08070773;
+    transition: 0.3s width linear, 0.3s background-color linear, 0.3s box-shadow linear;
+}
+.card:hover .ranking{
+    right: 7px;
+    transition: 0.3s right ease-in-out;
+}
+.card:hover .game-cover .img-fluid{
+    margin-top:-50px;
+    width: 60%;
+    transition: 0.2s width linear;
+}
+
+.card:hover .game-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s display;
+}
+.card:hover .game-info .bottom{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s display linear, 0.4s width;
+}
+
+.card:hover .game-info .bottom .total-player .player-watching span{
+    display: none;
+}
+
+.card:hover .game-info .bottom .total-player .player-watching p,
+.card:hover .game-info .bottom .total-player .player-streams,
+.card:hover .game-info .bottom .total-player .player-streams p{
+    display: block;
+}
+
+.card:hover .game-info .bottom .total-player div p.views{
+    font-weight: bold;
+}
+.card:hover .game-info .bottom .total-player div p.titles{
+    font-size: 0.6rem;
+}
+.card:hover .game-info .bottom .total-player{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+.card:hover .game-info .bottom .total-player .player-streams,
+.card:hover .game-info .bottom .total-player .player-watching{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    transition: 0.4s width linear, 0.4s display linear;
+}
+.card:hover .game-info .bottom .total-player .player-watching{
+    border-right: 1px solid var(--clr-primary);
+}
+.card:hover .game-info .bottom .see{
+    display: block;
+    transition: 0.6s display linear;
+}
+
+.card:hover .bottom .player-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    transition: 0.8s width linear;
+}
+
+.card:hover .game-info .player-icons .player .icon-img{
+    width: 30px;
+    border: 2px solid var(--clr-light);
+    margin-left: 0;
+    transition: 0.4s width linear, 0.4s border, 0.4s margin-left;
+}
+
+.card:hover .game-info .player-icons .player p.user-name ,
+.card:hover .game-info .player-icons .player p.user-watching{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.8s display linear;
+}
