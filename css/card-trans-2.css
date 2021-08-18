@@ -107,6 +107,7 @@ body{
 }
 
 .card .game-info .bottom{
+    z-index: 2;
     padding: 5px 0;
     font-size: 0.8rem;
     font-weight: 500;
@@ -199,11 +200,45 @@ body{
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 150%;
     z-index: 1;
     background: linear-gradient(#0c040452,#0c040452);
-	clip-path: ellipse(300% 250% at 40% -160%);
+    /* color: linear-gradient(#0c040452,#0c040452); */
+	/* clip-path: ellipse(300% 250% at 40% -160%); */
+    animation: waves 4s ease-in-out infinite;
     border-radius: 15px;
+}
+
+@keyframes waves {
+    0%,100%{
+        clip-path: polygon(0% 48%, 14% 43%, 28% 42%, 43% 45%, 59% 48%, 72% 53%, 83% 57%, 95% 55%, 100% 51%, 100% 0, 0 0);
+    }
+    50%{
+        /* clip-path: polygon(0 43%, 13% 49%, 28% 49%, 43% 44%, 57% 43%, 72% 49%, 83% 56%, 95% 54%, 100% 49%, 100% 0, 0 0); */
+        clip-path: polygon(0 43%, 13% 49%, 28% 49%, 43% 44%, 57% 43%, 72% 49%, 83% 56%, 95% 59%, 100% 60%, 100% 0, 0 0);
+    }
+}
+
+.card:hover .game-info::before{
+    content: "";
+    position: absolute;
+    bottom: -2%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(#0c040452,#0c040452);
+    animation: buble 4s ease-in-out infinite;
+}
+@keyframes buble {
+    0%,100%{
+        clip-path: circle(16.1% at 23% 74%);
+    }
+    25%,75%{
+        clip-path: circle(16.1% at 50% 74%);
+    }
+    50%{
+        clip-path: circle(16.1% at 76% 74%);
+    }
 }
 
 .card:hover {
@@ -227,6 +262,7 @@ body{
     justify-content: center;
     align-items: center;
     transition: 0.2s display;
+    position: relative;
 }
 .card:hover .game-info .bottom{
     display: flex;
